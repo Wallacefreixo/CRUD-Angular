@@ -1,0 +1,97 @@
+
+<form [formGroup]='clientFormGroup' novalidate >
+  <input class= "form-control" type="text" formControlName='nomecompleto' placeholder="Nome" [(ngModel)] = "currentClient.nomecompleto">
+  <input class= "form-control" type="text" formControlName='dtnascimento' placeholder="Data de nascimento" [(ngModel)] = "currentClient.dtnascimento"/>
+  <input class= "form-control" type="text" formControlName='sexo' placeholder="Sexo"  [(ngModel)] = "currentClient.sexo"/>
+  <input class= "form-control" type="text" formControlName='cpf' placeholder="CPF"  [(ngModel)] = "currentClient.cpf"/>
+  <input class= "form-control" type="text" formControlName='email' placeholder="E-mail"  [(ngModel)] = "currentClient.email"/>
+  <input class= "form-control" type="text" formControlName='telefone' placeholder="Telefone"  [(ngModel)] = "currentClient.telefone"/>
+
+
+    <button  *ngIf="save" class= 'btn btn-primary' (click)='addClient()'>Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    <button  *ngIf="update" class= 'btn btn-primary'  (click)='updateClient(currentClient.id)'>Atualizar <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+</form>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">Email</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Data Nascimento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor=" let client of clients">
+        <td>{{client.id}}</td>
+        <td>{{client.nomecompleto}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.telefone}}</td>
+        <td>{{client.cpf}}</td>
+        <td>{{client.sexo}}</td>
+        <td>{{client.dtnascimento}}</td>
+        <td><button type="button" class="btn btn-light" (click)='deleteClient(client.id)'><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+        <td><button type="button" class="btn btn-light" (click)='editClient(client.id)'><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+    </tr>
+  </tbody>
+
+
+
+
+
+<!--
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#content">
+    Cadastrar <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+
+  <div class="modal fade" id="content" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cadastrar Cliente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]='clientFormGroup' novalidate>
+            <div class="form-group">
+              <label>Nome Completo</label>
+              <input class= "form-control" type="text" formControlName='nomecompleto'>
+            </div>
+            <div class="form-group">
+              <label>Data de Nascimento</label>
+              <input class= "form-control"  type="text" formControlName='dtnascimento' placeholder="Data de nascimento">
+            </div>
+            <div class="form-group">
+              <label>Sexo</label>
+              <input class= "form-control" type="text" formControlName='sexo' placeholder="Sexo"/>
+            </div>
+            <div class="form-group">
+              <label>CPF</label>
+              <input class= "form-control" type="text" formControlName='cpf' placeholder="CPF"/>
+            </div>
+            <div class="form-group">
+              <label>E-mail</label>
+              <input class= "form-control" type="text" formControlName='email' placeholder="nome@hotmail.com"/>
+            </div>
+            <div class="form-group">
+              <label>Telefone</label>
+              <input class= "form-control" type="text" formControlName='telefone' placeholder="21 0000-000"/>
+            </div>
+
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button class= 'btn btn-primary' (click)='addClient()'>Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div> -->
