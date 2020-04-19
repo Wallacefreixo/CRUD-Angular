@@ -22,7 +22,7 @@
       <tr *ngFor=" let client of clients">
           <td>{{client.id}}</td>
           <td>{{client.nomecompleto}}</td>
-          <td>{{client.telefone | mask: '(00) 0000-0000'}}</td>
+          <td>{{client.telefones[0].numero | mask: '(00) 0000-0000'}}</td>
           <td>{{client.email}}</td>
           <td>{{client.cpf | mask: '000.000.000-00'}}</td>
           <td>{{client.sexo}}</td>
@@ -76,12 +76,12 @@
 
 
           <form [formGroup]="addtel" #myFormTel="ngForm">
-            <button type="button" (click)='addNewTel()' class="btn btn-outline-info">Add Novo Número <i class="fa fa-phone" aria-hidden="true"></i></button>
+            <button type="button" (click)='addNewTel()' class="btn btn-outline-secondary">Add Novo Número <i class="fa fa-phone" aria-hidden="true"></i></button>
             <div class="form-group" formArrayName="itemTel">
               <div *ngFor="let itemrow of addtel.controls.itemTel['controls']; let i=index"  [formGroupName]="i">
                 <label>Telefone {{i+1}}</label>
                 <div class="campo-input">
-                  <input id="telefones{{i}}" formControlName="telefones" class="form-control reset" mask="(00) 0000-0000" [(ngModel)] = "currentClient.telefones"/>
+                  <input id="numero{{i}}" formControlName="numero" class="form-control reset" mask="(00) 0000-0000" [(ngModel)]="currentClient.telefones[0].numero"/>
                   <button (click)="deleteTel(i)" class="btn btn-danger marginBt"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
                 </div>

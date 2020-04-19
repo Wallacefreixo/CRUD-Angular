@@ -40,12 +40,12 @@ export class ClientsComponent implements OnInit {
         sexo : new FormControl(''),
         cpf : new FormControl(''),
         email : new FormControl(''),
+        telefones: new FormControl(''),
     });
 
     this.addtel = this._fb.group({
       itemTel: this._fb.array([this.initItemTel()])
     });
-
     this.getClients();
   }
 
@@ -70,10 +70,9 @@ export class ClientsComponent implements OnInit {
       )
     }
 
-    fetchId = 0;
     //chamada cliente por id do service
-    getClient() {
-      this._clientService.getClient(this.fetchId).subscribe(item => {
+    getClient(id) {
+      this._clientService.getClient(id).subscribe(item => {
         this.client = item;
         this.displayData=true;
       });
@@ -82,10 +81,15 @@ export class ClientsComponent implements OnInit {
     //chamada adicionar cliente do service
     addClient() {
 
+      this.clientFormGroup.value.telefones = [];
+      let i=0
+      for(let tel of this.addtel.value.itemTel){
+        this.clientFormGroup.value.telefones[i] = tel;
+        i = i + 1;
+      }
       this._clientService.addClient(this.clientFormGroup.value)
       .subscribe(item => {
         this.client = item;
-        this.client.telefones = item.telefones
         console.log(this.client)
         this.getClients();
       })
@@ -114,6 +118,12 @@ export class ClientsComponent implements OnInit {
 
   //atualiza os dados
   updateClient(id) {
+    this.clientFormGroup.value.telefones = [];
+    let i=0
+    for(let tel of this.addtel.value.itemTel){
+      this.clientFormGroup.value.telefones[i] = tel;
+      i = i + 1;
+    }
     this._clientService.getClient(id).subscribe(item => {
       this.client = item;
       this.client.nomecompleto = this.clientFormGroup.value.nomecompleto;
@@ -126,6 +136,7 @@ export class ClientsComponent implements OnInit {
         this.getClients();
       });
     });
+
     alert("Atualizado com sucesso!!")
   }
 
@@ -145,7 +156,7 @@ export class ClientsComponent implements OnInit {
 
   initItemTel() {
     return this._fb.group({
-      telefones:[''],
+      numero:[''],
     });
   }
   addNewTel() {

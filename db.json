@@ -7,8 +7,12 @@
       "sexo": "F",
       "cpf": "54714958020",
       "telefones": [
-        "2228014020",
-        "2412054120"
+        {
+          "numero": "2228014020"
+        },
+        {
+          "numero": "2412054120"
+        }
       ],
       "email": "amanda@gmail.com"
     },
@@ -19,8 +23,12 @@
       "sexo": "M",
       "cpf": "48060103083",
       "telefones": [
-        "222801402",
-        "2512013229"
+        {
+          "numero": "222801402"
+        },
+        {
+          "numero": "2512013229"
+        }
       ],
       "email": "pedro@hotmail.com"
     },
@@ -31,10 +39,30 @@
       "sexo": "F",
       "cpf": "11277950075",
       "telefones": [
-        "2124102780",
-        "281393019"
+        {
+          "numero": "2124102780"
+        },
+        {
+          "numero": "281393019"
+        }
       ],
       "email": "vanessa@gmail.com"
+    },
+    {
+      "nomecompleto": "wallace",
+      "dtnascimento": "2322121",
+      "sexo": "M",
+      "cpf": "13243434121",
+      "email": "2@@",
+      "telefones": [
+        {
+          "numero": "5555555555"
+        },
+        {
+          "numero": "9755555555"
+        }
+      ],
+      "id": 4
     }
   ]
 }
