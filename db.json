@@ -6,44 +6,11 @@
       "dtnascimento": "22091976",
       "sexo": "F",
       "cpf": "54714958020",
-      "telefone": "2129021202",
+      "telefones": [
+        "2228014020",
+        "2412054120"
+      ],
       "email": "amanda@gmail.com"
-    },
-    {
-      "id": 2,
-      "nomecompleto": "Pedro Augusto",
-      "dtnascimento": "10011982",
-      "sexo": "M",
-      "cpf": "48060103083",
-      "telefone": "2228014020",
-      "email": "pedro@hotmail.com"
-    },
-    {
-      "id": 3,
-      "nomecompleto": "Vanessa Almeida",
-      "dtnascimento": "18101993",
-      "sexo": "F",
-      "cpf": "11277950075",
-      "telefone": "2124102780",
-      "email": "vanessa@gmail.com"
-    },
-    {
-      "id": 4,
-      "nomecompleto": "Gustavo Alves",
-      "dtnascimento": "30061979",
-      "sexo": "M",
-      "cpf": "18328047047",
-      "telefone": "2223118029",
-      "email": "gustavo@hotmail.com"
-    },
-    {
-      "id": 5,
-      "nomecompleto": "José Arnaldo ",
-      "dtnascimento": "27111990",
-      "sexo": "M",
-      "cpf": "33071073054",
-      "telefone": "2121627060",
-      "email": "jose@gmail.com"
     }
   ]
 }

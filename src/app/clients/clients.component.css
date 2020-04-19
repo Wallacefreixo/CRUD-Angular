@@ -11,4 +11,10 @@
 .table{
   margin-top: 40px;
 }
-
+.campo-input{
+  display: flex;
+  flex-direction: row;
+}
+.marginBt{
+  margin-left: 20px;
+}

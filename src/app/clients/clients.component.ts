@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Clients } from '../clients';
 import { ClientsService } from '../clients.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-clients',
@@ -11,14 +11,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 
 export class ClientsComponent implements OnInit {
-  constructor(private _clientService: ClientsService) { }
+  constructor(private _clientService: ClientsService, private _fb: FormBuilder) { }
 
   currentClient: Clients = {
     id: 0,
     nomecompleto : '',
     dtnascimento : '',
     sexo:'',
-    telefone:'',
+    telefones:'',
     cpf: '',
     email: '',
   }
@@ -30,21 +30,27 @@ export class ClientsComponent implements OnInit {
   public clients: Clients[];
   public client: Clients;
 
+  public addtel: FormGroup;
+
   ngOnInit(): void{
 
-    this.clientFormGroup = new FormGroup(
-      {
+    this.clientFormGroup = new FormGroup({
         nomecompleto : new FormControl(''),
         dtnascimento : new FormControl(''),
         sexo : new FormControl(''),
         cpf : new FormControl(''),
         email : new FormControl(''),
-        telefone : new FormControl('')
-      },
-    );
+        telefones : new FormControl('')
+    });
+
+    this.addtel = this._fb.group({
+      itemTel: this._fb.array([this.initItemTel()])
+    });
 
     this.getClients();
   }
+
+
 
   //chamada listar clientes do service
     getClients(){
@@ -57,7 +63,7 @@ export class ClientsComponent implements OnInit {
               item.dtnascimento,
               item.sexo,
               item.cpf,
-              item.telefone,
+              item.telefones,
               item.email
             )}
           )
@@ -82,7 +88,7 @@ export class ClientsComponent implements OnInit {
         console.log(this.client)
         this.getClients();
       })
-      this.closeModal()
+      alert("Cadastrado com sucesso!!")
 
     }
 
@@ -114,12 +120,12 @@ export class ClientsComponent implements OnInit {
       this.client.sexo = this.clientFormGroup.value.sexo;
       this.client.cpf = this.clientFormGroup.value.cpf;
       this.client.email = this.clientFormGroup.value.email;
-      this.client.telefone = this.clientFormGroup.value.telefone;
+      this.client.telefones = this.clientFormGroup.value.telefones;
       this._clientService.updateClient(this.client).subscribe(data1 => {
         this.getClients();
       });
     });
-    this.closeModal();
+    alert("Atualizado com sucesso!!")
   }
 
   openModal(){
@@ -129,5 +135,24 @@ export class ClientsComponent implements OnInit {
   }
 
   closeModal(){ }
+
+
+  //lista de telefones
+  get formTel() {
+    return this.addtel.get('itemTel') as FormArray;
+  }
+
+  initItemTel() {
+    return this._fb.group({
+    numero:[''],
+    });
+  }
+  addNewTel() {
+    this.formTel.push(this.initItemTel());
+  }
+
+  deleteTel(index: number) {
+    this.formTel.removeAt(index);
+  }
 
 }

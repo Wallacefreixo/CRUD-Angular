@@ -4,10 +4,10 @@ export class Clients {
    dtnascimento : string;
    sexo: string;
    cpf: string;
-   telefone: string;
+   telefones: string;
    email : string;
 
-   constructor( id : number, nomecompleto :string, dtnascimento : string, sexo: string, cpf: string, telefone:string, email : string)
+   constructor( id : number, nomecompleto :string, dtnascimento : string, sexo: string, cpf: string, telefones: string, email : string)
    {
     this.id = id;
     this.nomecompleto = nomecompleto;
@@ -15,7 +15,7 @@ export class Clients {
     this.sexo = sexo;
     this.cpf = cpf;
     this.email = email;
-    this.telefone = telefone;
+    this.telefones = telefones;
     }
 }
 
