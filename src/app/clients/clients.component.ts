@@ -13,6 +13,7 @@ import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class ClientsComponent implements OnInit {
   constructor(private _clientService: ClientsService, private _fb: FormBuilder) { }
 
+
   currentClient: Clients = {
     id: 0,
     nomecompleto : '',
@@ -29,7 +30,7 @@ export class ClientsComponent implements OnInit {
   public clientFormGroup: FormGroup;
   public clients: Clients[];
   public client: Clients;
-  public counter:0;
+
   public addtel: FormGroup;
 
   ngOnInit(): void{
