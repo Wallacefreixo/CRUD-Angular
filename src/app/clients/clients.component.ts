@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Clients } from '../clients';
 import { ClientsService } from '../clients.service';
-import { FormGroup, FormControl  } from '@angular/forms';
+import { FormGroup, FormControl, NgForm  } from '@angular/forms';
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })
-export class ClientsComponent implements OnInit {
 
+
+export class ClientsComponent implements OnInit {
   constructor(private _clientService: ClientsService) { }
 
   currentClient: Clients = {
@@ -21,6 +22,7 @@ export class ClientsComponent implements OnInit {
     cpf: '',
     email: '',
   }
+  public display='none'; //modal
   public save = true;
   public update = false;
   public displayData: boolean;
@@ -29,6 +31,7 @@ export class ClientsComponent implements OnInit {
   public client: Clients;
 
   ngOnInit(): void{
+
     this.clientFormGroup = new FormGroup(
       {
         nomecompleto : new FormControl(''),
@@ -39,6 +42,7 @@ export class ClientsComponent implements OnInit {
         telefone : new FormControl('')
       },
     );
+
     this.getClients();
   }
 
@@ -53,8 +57,8 @@ export class ClientsComponent implements OnInit {
               item.dtnascimento,
               item.sexo,
               item.cpf,
-              item.email,
-              item.telefone
+              item.telefone,
+              item.email
             )}
           )
         }
@@ -78,6 +82,8 @@ export class ClientsComponent implements OnInit {
         console.log(this.client)
         this.getClients();
       })
+      this.closeModal()
+
     }
 
     //chamada deletar clientes do service
@@ -94,7 +100,10 @@ export class ClientsComponent implements OnInit {
    this._clientService.getClient(id).subscribe(item => {
      this.currentClient = item;
     });
+    //abre modal
+    this.display = "block";
   }
+
 
   //atualiza os dados
   updateClient(id) {
@@ -110,5 +119,17 @@ export class ClientsComponent implements OnInit {
         this.getClients();
       });
     });
+    this.closeModal();
   }
+
+  openModal(){
+      this.display = "block";
+      this.save = true;
+      this.update = false;
+  }
+
+  closeModal(){
+    this.display = "none";
+  }
+
 }

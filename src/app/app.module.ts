@@ -6,6 +6,10 @@ import { ClientsComponent } from './clients/clients.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +20,8 @@ import { MenuComponent } from './menu/menu.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(options)
   ],
   providers: [],
   bootstrap: [AppComponent]

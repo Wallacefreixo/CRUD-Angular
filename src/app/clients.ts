@@ -4,7 +4,7 @@ export class Clients {
    dtnascimento : string;
    sexo: string;
    cpf: string;
-   telefone:string;
+   telefone: string;
    email : string;
 
    constructor( id : number, nomecompleto :string, dtnascimento : string, sexo: string, cpf: string, telefone:string, email : string)
@@ -14,8 +14,8 @@ export class Clients {
     this.dtnascimento = dtnascimento;
     this.sexo = sexo;
     this.cpf = cpf;
-    this.telefone = telefone;
     this.email = email;
+    this.telefone = telefone;
     }
 }
 

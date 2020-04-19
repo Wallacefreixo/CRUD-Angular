@@ -3,47 +3,56 @@
     {
       "id": 1,
       "nomecompleto": "Amanda Ferreira",
-      "dtnascimento": "22/09/1976",
+      "dtnascimento": "22091976",
       "sexo": "F",
-      "cpf": "547.149.580-20",
-      "telefone": "21 2902-1202",
+      "cpf": "54714958020",
+      "telefone": "2129021202",
       "email": "amanda@gmail.com"
     },
     {
       "id": 2,
       "nomecompleto": "Pedro Augusto",
-      "dtnascimento": "10/01/1982",
+      "dtnascimento": "10011982",
       "sexo": "M",
-      "cpf": "480.601.030-83",
-      "telefone": "22 2801-4020",
+      "cpf": "48060103083",
+      "telefone": "2228014020",
       "email": "pedro@hotmail.com"
     },
     {
       "id": 3,
       "nomecompleto": "Vanessa Almeida",
-      "dtnascimento": "18/10/1993",
+      "dtnascimento": "18101993",
       "sexo": "F",
-      "cpf": "112.779.500-75",
-      "telefone": "21 2410-2780",
+      "cpf": "11277950075",
+      "telefone": "2124102780",
       "email": "vanessa@gmail.com"
     },
     {
       "id": 4,
       "nomecompleto": "Gustavo Alves",
-      "dtnascimento": "30/06/1979",
+      "dtnascimento": "30061979",
       "sexo": "M",
-      "cpf": "183.280.470-47",
-      "telefone": "22 2311-8029",
+      "cpf": "18328047047",
+      "telefone": "2223118029",
       "email": "gustavo@hotmail.com"
     },
     {
       "id": 5,
       "nomecompleto": "José Arnaldo ",
-      "dtnascimento": "27/11/1990",
+      "dtnascimento": "27111990",
       "sexo": "M",
-      "cpf": "330.710.730-54",
-      "telefone": "21 2162-7060",
+      "cpf": "33071073054",
+      "telefone": "2121627060",
       "email": "jose@gmail.com"
+    },
+    {
+      "nomecompleto": "wallace2121",
+      "dtnascimento": "12",
+      "sexo": "M",
+      "cpf": "111111",
+      "email": "111",
+      "telefone": "111",
+      "id": 6
     }
   ]
 }
