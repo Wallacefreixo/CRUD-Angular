@@ -49,8 +49,6 @@ export class ClientsComponent implements OnInit {
     this.getClients();
   }
 
-
-
   //chamada listar clientes do service
     getClients(){
         this._clientService.getClients()
