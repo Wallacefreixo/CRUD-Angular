@@ -1,6 +1,6 @@
 # Run
 
-Instalação de depedências as duas dependências:
+Instalação:
 
 npm install
 npm install g json-server
