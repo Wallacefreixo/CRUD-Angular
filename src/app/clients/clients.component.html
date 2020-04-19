@@ -1,51 +1,53 @@
 
-<button type="button" class="btn btn-primary" data-toggle="modal" (click)='openModal()' data-target="#myModal">
+<button type="button" class="btn btdefault" data-toggle="modal" (click)='openModal()' data-target="#myModal">
   Cadastrar <i class="fa fa-address-card-o" aria-hidden="true"></i>
 </button>
 
 <!--TABLE-->
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">Email</th>
-      <th scope="col">CPF</th>
-      <th scope="col">Sexo</th>
-      <th scope="col">Data Nascimento</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor=" let client of clients">
-        <td>{{client.id}}</td>
-        <td>{{client.nomecompleto}}</td>
-        <td>{{client.telefone | mask: '(00) 0000-0000'}}</td>
-        <td>{{client.email}}</td>
-        <td>{{client.cpf | mask: '000.000.000-00'}}</td>
-        <td>{{client.sexo}}</td>
-        <td>{{client.dtnascimento |mask: '00/00/0000'}}</td>
-
-        <td><button type="button" class="btn btn-warning" data-toggle="modal" (click)='editClient(client.id)' data-target="#myModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-        <td><button type="button" class="btn btn-danger" (click)='deleteClient(client.id)'><i class="fa fa-trash" aria-hidden="true"></i></button></td>
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Email</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">DataNasc</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
-  </tbody>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let client of clients">
+          <td>{{client.id}}</td>
+          <td>{{client.nomecompleto}}</td>
+          <td>{{client.telefone | mask: '(00) 0000-0000'}}</td>
+          <td>{{client.email}}</td>
+          <td>{{client.cpf | mask: '000.000.000-00'}}</td>
+          <td>{{client.sexo}}</td>
+          <td>{{client.dtnascimento |mask: '00/00/0000'}}</td>
+
+          <td><button type="button" class="btn btn-warning" data-toggle="modal" (click)='editClient(client.id)' data-target="#myModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+          <td><button type="button" class="btn btn-danger" (click)='deleteClient(client.id)'><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+
+        </tr>
+      </tbody>
+  </table>
+
 
 <!-- MODAL-->
-  <div [ngStyle]="{'display':display}" data-backdrop="" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div [ngStyle]="{'display':display}" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">{{ save ? 'Cadastrar Cliente' : 'Atualizar Cliente'}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title" id="exampleModalLabel">{{ save ? 'Cadastrar Cliente' : 'Atualizar Cliente'}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)='myForm.reset()'>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form [formGroup]='clientFormGroup' novalidate >
+          <form [formGroup]='clientFormGroup' #myForm="ngForm" novalidate >
             <div class="form-group">
               <label>Nome Completo</label>
               <input class= "form-control" type="text" formControlName='nomecompleto'  [(ngModel)] = "currentClient.nomecompleto">
@@ -78,9 +80,13 @@
            </form>
         </div>
         <div class="modal-footer">
-          <button  *ngIf="save" class= 'btn btn-primary' (click)='addClient()'>Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-          <button  *ngIf="update" class= 'btn btn-primary'  (click)='updateClient(currentClient.id);'>Atualizar <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-light" data-dismiss="modal" (click)='addClient(); myForm.reset()'>Cancelar</button>
+          <button  *ngIf="save" class= 'btn btdefault' (click)='addClient(); myForm.reset()'>Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+          <button  *ngIf="update" class= 'btn btdefault'  (click)='updateClient(currentClient.id);'>Atualizar <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+
         </div>
       </div>
     </div>
   </div>
+
+

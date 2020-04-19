@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Clients } from '../clients';
 import { ClientsService } from '../clients.service';
-import { FormGroup, FormControl, NgForm  } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-clients',
@@ -128,8 +128,6 @@ export class ClientsComponent implements OnInit {
       this.update = false;
   }
 
-  closeModal(){
-    this.display = "none";
-  }
+  closeModal(){ }
 
 }
