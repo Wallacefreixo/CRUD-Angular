@@ -13,7 +13,6 @@ import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class ClientsComponent implements OnInit {
   constructor(private _clientService: ClientsService, private _fb: FormBuilder) { }
 
-
   currentClient: Clients = {
     id: 0,
     nomecompleto : '',
@@ -33,6 +32,7 @@ export class ClientsComponent implements OnInit {
 
   public addtel: FormGroup;
 
+
   ngOnInit(): void{
 
     this.clientFormGroup = new FormGroup({
@@ -49,6 +49,7 @@ export class ClientsComponent implements OnInit {
     });
     this.getClients();
   }
+
 
   //chamada listar clientes do service
     getClients(){
@@ -109,6 +110,7 @@ export class ClientsComponent implements OnInit {
    this.save = false;
    this._clientService.getClient(id).subscribe(item => {
      this.currentClient = item;
+     console.log(this.currentClient.telefones)
     });
     //abre modal
     this.display = "block";

@@ -47,22 +47,6 @@
         }
       ],
       "email": "vanessa@gmail.com"
-    },
-    {
-      "nomecompleto": "wallac2@@",
-      "dtnascimento": "21212112",
-      "sexo": "M",
-      "cpf": "12433213211",
-      "email": "wa@@",
-      "telefones": [
-        {
-          "numero": "1212121212"
-        },
-        {
-          "numero": "2323232112"
-        }
-      ],
-      "id": 4
     }
   ]
 }
