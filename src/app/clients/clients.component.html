@@ -42,7 +42,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{ save ? 'Cadastrar Cliente' : 'Atualizar Cliente'}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)='myForm.reset()'>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)='myForm.reset(); myFormTel.reset()'>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -75,29 +75,23 @@
           </form>
 
 
-          <form [formGroup]="addtel">
-
+          <form [formGroup]="addtel" #myFormTel="ngForm">
             <button type="button" (click)='addNewTel()' class="btn btn-outline-info">Add Novo Número <i class="fa fa-phone" aria-hidden="true"></i></button>
-
             <div class="form-group" formArrayName="itemTel">
-
               <div *ngFor="let itemrow of addtel.controls.itemTel['controls']; let i=index"  [formGroupName]="i">
                 <label>Telefone {{i+1}}</label>
                 <div class="campo-input">
-                  <input id="numero{{i}}" formControlName="numero" class="form-control reset" mask="(00) 0000-0000"/>
+                  <input id="telefones{{i}}" formControlName="telefones" class="form-control reset" mask="(00) 0000-0000" [(ngModel)] = "currentClient.telefones"/>
                   <button (click)="deleteTel(i)" class="btn btn-danger marginBt"><i class="fa fa-trash" aria-hidden="true"></i></button>
-
                 </div>
                 </div>
-
             </div>
-
           </form>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-dismiss="modal" (click)='myForm.reset()'>Cancelar</button>
-          <button  *ngIf="save" class= 'btn btdefault' (click)='addClient(); myForm.reset()'>Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-light" data-dismiss="modal" (click)='myForm.reset(); myFormTel.reset()'>Cancelar</button>
+          <button  *ngIf="save" class= 'btn btdefault' (click)='addClient(); myForm.reset(); myFormTel.reset()'>Salvar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
           <button  *ngIf="update" class= 'btn btdefault'  (click)='updateClient(currentClient.id);'>Atualizar <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 
         </div>

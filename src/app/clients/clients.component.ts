@@ -29,7 +29,7 @@ export class ClientsComponent implements OnInit {
   public clientFormGroup: FormGroup;
   public clients: Clients[];
   public client: Clients;
-
+  public counter:0;
   public addtel: FormGroup;
 
   ngOnInit(): void{
@@ -40,7 +40,6 @@ export class ClientsComponent implements OnInit {
         sexo : new FormControl(''),
         cpf : new FormControl(''),
         email : new FormControl(''),
-        telefones : new FormControl('')
     });
 
     this.addtel = this._fb.group({
@@ -82,9 +81,11 @@ export class ClientsComponent implements OnInit {
 
     //chamada adicionar cliente do service
     addClient() {
+
       this._clientService.addClient(this.clientFormGroup.value)
       .subscribe(item => {
         this.client = item;
+        this.client.telefones = item.telefones
         console.log(this.client)
         this.getClients();
       })
@@ -144,7 +145,7 @@ export class ClientsComponent implements OnInit {
 
   initItemTel() {
     return this._fb.group({
-    numero:[''],
+      telefones:[''],
     });
   }
   addNewTel() {

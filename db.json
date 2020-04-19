@@ -11,6 +11,30 @@
         "2412054120"
       ],
       "email": "amanda@gmail.com"
+    },
+    {
+      "id": 2,
+      "nomecompleto": "Pedro Augusto",
+      "dtnascimento": "10011982",
+      "sexo": "M",
+      "cpf": "48060103083",
+      "telefones": [
+        "222801402",
+        "2512013229"
+      ],
+      "email": "pedro@hotmail.com"
+    },
+    {
+      "id": 3,
+      "nomecompleto": "Vanessa Almeida",
+      "dtnascimento": "18101993",
+      "sexo": "F",
+      "cpf": "11277950075",
+      "telefones": [
+        "2124102780",
+        "281393019"
+      ],
+      "email": "vanessa@gmail.com"
     }
   ]
 }
